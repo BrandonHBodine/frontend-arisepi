@@ -1,0 +1,35 @@
+.demo-layout-transparent {
+  background: url('/images/nasa-lights.jpg') center / cover;
+}
+.demo-layout-transparent .mdl-layout__header,
+.demo-layout-transparent .mdl-layout__drawer-button {
+  /* This background is dark, so we set text to white. Use 87% black instead if
+   your background is light. */
+  color: white;
+}
+
+.mdl-page {
+  margin: auto;
+  width: 90%;
+  background-color: #E3F2FD;
+}
+.text-center {
+  text-align: center;;
+}
+.top-margin {
+  margin-top: 50px;
+}
+
+.red {
+  background-color: red;
+}
+
+.primary {
+  background-color: #3F51B5;
+  color: #FFFFFF;
+}
+
+header a {
+  color: rgb(66, 66, 66);
+  text-decoration: none;
+}
