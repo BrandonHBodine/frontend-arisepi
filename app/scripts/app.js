@@ -1,2 +1,2 @@
 'use strict';
-var app = angular.module('arisePi', ['ngRoute']);
+angular.module('arisePi', ['ngRoute', 'authInterceptor']);

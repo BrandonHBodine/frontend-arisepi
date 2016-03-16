@@ -1,46 +1,53 @@
-<form>
+<form ng-submit="signupCtrl.submit()" name="signup">
 
   <div class="mdl-grid top-margin mdl-shadow--2dp mdl-page">
     <div class="mdl-cell mdl-cell--12-col">
-      <h1>{{ signup.title }}</h1>
-      <p>Please enter your information to create your account and get started with Arise Pi.</p> 
+      <h1>{{ signupCtrl.title }}</h1>
+      <p>Please enter your information to create your account and get started with Arise Pi.</p>
     </div>
     <div class="mdl-cell mdl-cell--4-col">
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="text" id="fname">
+        <input class="mdl-textfield__input" type="text" id="fname" name="fname" ng-model="signupCtrl.user.fname">
         <label class="mdl-textfield__label" for="fname">First name</label>
       </div>
     </div>
     <div class="mdl-cell mdl-cell--4-col">
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="text" id="lname">
+        <input class="mdl-textfield__input" type="text" id="lname" name="lname" ng-model="signupCtrl.user.lname">
         <label class="mdl-textfield__label" for="lname">Last name</label>
       </div>
     </div>
     <div class="mdl-cell mdl-cell--4-col">
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="text" pattern="[0-9]*" id="phone">
+        <input class="mdl-textfield__input" type="text" pattern="[0-9]*" id="phone" name="phone" ng-model="signupCtrl.user.phone">
         <label class="mdl-textfield__label" for="phone">Phone</label>
         <span class="mdl-textfield__error">Digits only</span>
       </div>
     </div>
     <div class="mdl-cell mdl-cell--4-col">
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="text" id="email">
+        <input class="mdl-textfield__input" type="text" id="email" name="email" ng-model="signupCtrl.user.email">
         <label class="mdl-textfield__label" for="email">Email</label>
       </div>
     </div>
     <div class="mdl-cell mdl-cell--4-col">
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="password" id="password">
+        <input class="mdl-textfield__input" type="password" id="password" name="password" ng-model="signupCtrl.user.password">
         <label class="mdl-textfield__label" for="password">Password</label>
       </div>
     </div>
     <div class="mdl-cell mdl-cell--4-col">
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="password" id="password2">
+        <input class="mdl-textfield__input" type="password" id="password2"
+        name="password2" ng-model="signupCtrl.user.password2">
         <label class="mdl-textfield__label" for="password">Verify Password</label>
       </div>
     </div>
+    <div class="mdl-cell mdl-cell--12-col text-center">
+      <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-button--block">
+        Sign Up!
+      </button>
+    </div>
   </div>
+
 </form>

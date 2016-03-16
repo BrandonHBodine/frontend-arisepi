@@ -11,28 +11,35 @@ body {
   color: white;
 }
 
+// Material Design Lite Adjusters
 .mdl-page {
   margin: auto;
   width: 90%;
   background-color: #FFFFFF;
 }
-.text-center {
-  text-align: center;;
-}
-.top-margin {
-  margin-top: 50px;
-}
 
-.red {
-  background-color: red;
-}
-
-.primary {
-  background-color: #3F51B5;
-  color: #FFFFFF;
+.mdl-button--block {
+  width: 100%;
 }
 
 header a {
   color: rgb(66, 66, 66);
   text-decoration: none;
+}
+
+// Helper Classes
+.text-center {
+  text-align: center;;
+}
+.center-block {
+  display: block;
+  margin: auto;
+}
+.top-margin {
+  margin-top: 50px;
+}
+
+// Containers
+.login-container {
+  width: 350px;
 }
