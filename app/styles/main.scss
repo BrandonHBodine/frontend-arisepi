@@ -21,10 +21,17 @@ body {
 .mdl-button--block {
   width: 100%;
 }
-
+// Header Styles
 header a {
   color: rgb(66, 66, 66);
   text-decoration: none;
+}
+
+.header-clock {
+  vertical-align: super;
+}
+.header-clock-tray {
+  vertical-align: sub;
 }
 
 // Helper Classes
