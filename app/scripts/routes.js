@@ -4,9 +4,7 @@ var app = angular.module('arisePi');
 app.config(function($routeProvider) {
   $routeProvider
     .when('/', {
-      templateUrl: 'views/home.html',
-      controller: 'ServerController',
-      contorllerAs: 'server'
+      templateUrl: 'views/home.html'
     }).when('/about', {
       templateUrl: 'views/about.html',
       controller: 'SignupController',
@@ -19,6 +17,10 @@ app.config(function($routeProvider) {
       templateUrl: 'views/login.html',
       controller: 'LoginController',
       controllerAs: 'loginCtrl'
+    }).when('/add-pi-clock', {
+      templateUrl: 'views/add-pi-clock.html',
+      controller: 'AddClockController',
+      controllerAs: 'addClockCtrl'
     })
     .otherwise({
       redirectTo: '/'

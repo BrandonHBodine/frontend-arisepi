@@ -1,20 +1,20 @@
 'use strict';
 var app = angular.module('arisePi');
 
-
 // Handle Auth
-app.service('authentication', ['$window', '$http', authentication]);
+app.service('authentication', ['$window', '$http', '$location', authentication]);
 app.service('mdlElementRegister', [mdlElementRegister]);
 
-function authentication($window, $http) {
+function authentication($window, $http, $location) {
+
   // Get and set tokens, use with interceptor
   var saveToken = function(token) {
-    // Set session storage to token
-    $window.sessionStorage.jwt = token;
+    // Set local storage to token
+    $window.localStorage.jwt = token;
   };
 
   var getToken = function() {
-    return $window.sessionStorage.jwt;
+    return $window.localStorage.jwt;
   };
 
   var signup = function(user) {
@@ -43,8 +43,11 @@ function authentication($window, $http) {
     }).then(function successCallback(response) {
       // Token is stored in response.data
       var token = JSON.stringify(response.data);
-      saveToken('jwt', token);
+      saveToken(token);
+      $location.path('/');
+      isLoggedIn();
       console.log(JSON.stringify(response));
+
     }, function errorCallback(response) {
       // called asynchronously if an error occurs
       // or server returns response with an error status.
@@ -53,14 +56,41 @@ function authentication($window, $http) {
   };
 
   var logout = function() {
-    $window.sessionStorage.removeItem('jwt');
+    console.log('User has been logged out');
+    $window.localStorage.removeItem('jwt');
+    isLoggedIn();
   };
+
+  var isLoggedIn = function(){
+    var token = getToken();
+    if (token) {
+      var payload = JSON.parse($window.atob(token.split('.')[1]));
+      // Will return false if the token has expired
+      return payload.exp > Date.now() / 1000;
+    } else {
+      return false;
+    }
+
+  };
+
+  var userInfo = function() {
+    if(isLoggedIn()){
+      var token = getToken();
+      var payload = JSON.parse($window.atob(token.split('.')[1]));
+      return {
+        email: payload.email
+      };
+    }
+  };
+
   return {
     saveToken: saveToken,
     getToken: getToken,
     signup: signup,
     login: login,
-    logout: logout
+    logout: logout,
+    isLoggedIn: isLoggedIn,
+    userInfo: userInfo
   };
 }
 

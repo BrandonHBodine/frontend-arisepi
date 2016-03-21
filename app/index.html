@@ -70,15 +70,28 @@
               </span>
             </div>
           </div>
-          <nav class="mdl-navigation">
+
+          <!-- Not Logged In View -->
+          <nav class="mdl-navigation" ng-hide="main.loggedIn">
             <a class="mdl-navigation__link" href="#">About</a>
             <a class="mdl-navigation__link" href="/#/signup">Sign Up</a>
             <a class="mdl-navigation__link" href="/#/login">Login</a>
           </nav>
+          <!-- End Not Logged In View -->
+
+          <!-- Logged In View -->
+          <nav class="mdl-navigation" ng-show="main.loggedIn">
+            <a class="mdl-navigation__link" href="/#/piclocks">Your Pi Clocks</a>
+            <a class="mdl-navigation__link" href="/#/" ng-click="main.logout(); main.isLoggedIn();">Logout</a>
+          </nav>
+          <!-- Logged In View -->
+
         </div>
+
         <!--  PAGE TITLE -->
         <div class="mdl-layout__header-row">
           <h1>
+            <!-- {{ main.title }} -->
           </h1>
         </div>
       </header>
@@ -87,11 +100,22 @@
           <i class="material-icons header-clock-tray">av_timer</i>
           <span> {{ main.time }} </span>
         </span>
-        <nav class="mdl-navigation">
+
+        <!-- Not Logged In View -->
+        <nav class="mdl-navigation" ng-hide="main.loggedIn">
           <a class="mdl-navigation__link" href="#">About</a>
           <a class="mdl-navigation__link" href="/#/signup">Sign Up</a>
           <a class="mdl-navigation__link" href="/#/login">Login</a>
         </nav>
+        <!-- End Not Logged In View -->
+
+        <!-- Logged In View -->
+        <nav class="mdl-navigation" ng-show="main.loggedIn">
+          <a class="mdl-navigation__link" href="/#/piclocks">Your Pi Clocks</a>
+          <a class="mdl-navigation__link" href="/#/" ng-click="main.logout(); main.isLoggedIn();">Logout</a>
+        </nav>
+        <!-- Logged In View -->
+
       </div>
       <!-- CONTENT CONTAINER -->
       <main class="mdl-layout__content">
