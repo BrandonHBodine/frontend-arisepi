@@ -1,15 +1,71 @@
-<div class="mdl-grid mdl-page top-margin mdl-shadow--2dp">
-  <div class="mdl-cell mdl-cell--12-col">
+<div class="mdl-grid mdl-page top-margin mdl-shadow--1dp">
+
+  <div class="mdl-cell mdl-cell--12-col text-center" ng-hide="main.loggedIn">
     <h1>Welcome To Arise Pi</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
   </div>
-  <div class="mdl-cell mdl-cell--12-col">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
+
+  <div class="mdl-cell mdl-cell--12-col text-center" ng-show="main.loggedIn">
+    <h1>Setup Your Clock</h1>
   </div>
-  <div class="mdl-cell mdl-cell--12-col">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
+
+  <div class="mdl-cell mdl-cell--6-col" ng-hide="main.loggedIn">
+    <div class="mdl-card mdl-shadow--4dp home-card">
+      <div class="mdl-card__media">
+        <div class="text-center">
+          <i class="material-icons home-card-icon">account_box</i>
+        </div>
+      </div>
+      <div class="mdl-card__actions text-center">
+        <a href="/#/signup" class="mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect">
+          Sign Up
+        </a>
+      </div>
+    </div>
   </div>
+
+  <div class="mdl-cell mdl-cell--6-col" ng-hide="main.loggedIn">
+    <div class="mdl-card mdl-shadow--4dp home-card">
+      <div class="mdl-card__media">
+        <div class="text-center">
+          <i class="material-icons home-card-icon">face</i>
+        </div>
+      </div>
+      <div class="mdl-card__actions text-center">
+        <a href="/#/login" class="mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect">
+          Login
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mdl-cell mdl-cell--6-col" ng-show="main.loggedIn">
+    <div class="mdl-card mdl-shadow--4dp home-card">
+      <div class="mdl-card__media">
+        <div class="text-center">
+          <i class="material-icons home-card-icon">add_alarm</i>
+        </div>
+      </div>
+      <div class="mdl-card__actions text-center">
+        <a href="/#/add-pi-clock" class="mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect">
+          Add Clock
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mdl-cell mdl-cell--6-col" ng-show="main.loggedIn">
+    <div class="mdl-card mdl-shadow--4dp home-card">
+      <div class="mdl-card__media">
+        <div class="text-center">
+          <i class="material-icons home-card-icon">access_alarms</i>
+        </div>
+      </div>
+      <div class="mdl-card__actions text-center">
+        <a href="/#/clocks" class="mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect">
+          View Clocks
+        </a>
+      </div>
+    </div>
+  </div>
+
 </div>

@@ -1,0 +1,39 @@
+<div class="mdl-grid mdl-page top-margin mdl-shadow--1dp">
+
+  <div class="mdl-cell mdl-cell--12-col text-center" ng-show="main.loggedIn">
+    <h1>
+      {{ yourClocksCtrl.title }}
+    </h1>
+  </div>
+
+  <div class="mdl-cell mdl-cell--3-col" ng-repeat="clock in yourClocksCtrl.yourClocks">
+
+    <div class="mdl-card mdl-shadow--4dp home-card">
+      <div class="mdl-card__media">
+        <div class="text-center">
+          <i class="material-icons clock-card-icon">access_alarm</i>
+        </div>
+      </div>
+      <div class="mdl-card__title">
+        <h4 class="mdl-card__title-text">
+          {{ clock.name }}
+        </h4>
+      </div>
+      <div class="mdl-card__supporting-text">
+        ID:
+        {{ clock.id }}
+        <br/>
+        Local IP:
+        {{ clock.ip }}
+      </div>
+      <div class="mdl-card__actions text-center">
+        <a ng-href="/#/clock/{{clock.id}}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+          View Clock
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

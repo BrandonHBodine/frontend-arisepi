@@ -9,11 +9,12 @@ function authInterceptor($rootScope, $q, $window) {
     request: function(config) {
       config.headers = config.headers || {};
       if ($window.localStorage.jwt) {
-        console.log('The jwt has been sent: ' +$window.localStorage.jwt);
-        config.headers.Authorization = 'Bearer ' + $window.localStorage.jwt;
+        console.log('The jwt has been sent: ' + JSON.parse($window.localStorage.jwt));
+        config.headers.Authorization = 'Bearer ' + JSON.parse($window.localStorage.jwt);
       }
       return config;
     },
+
     response: function(response) {
       if (response.status === 401) {
         console.log('Shit your interceptor is not working :()');

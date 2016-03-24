@@ -60,16 +60,11 @@
         <div class="mdl-layout-icon"></div>
         <div class="mdl-layout__header-row">
           <span class="mdl-layout__title">
-            <a href="/#/">ARISE PI</a>
+            <a href="/#/">
+              <h3>ARISE PI</h3>
+            </a>
           </span>
-          <div class="mdl-layout-spacer text-center">
-            <div>
-              <i class="material-icons">av_timer</i>
-              <span class="header-clock">
-                {{ main.time }}
-              </span>
-            </div>
-          </div>
+          <div class="mdl-layout-spacer text-center"></div>
 
           <!-- Not Logged In View -->
           <nav class="mdl-navigation" ng-hide="main.loggedIn">
@@ -82,7 +77,8 @@
           <!-- Logged In View -->
           <nav class="mdl-navigation" ng-show="main.loggedIn">
             <a class="mdl-navigation__link" href="/#/piclocks">Your Pi Clocks</a>
-            <a class="mdl-navigation__link" href="/#/" ng-click="main.logout(); main.isLoggedIn();">Logout</a>
+            <a class="mdl-navigation__link" href="/#/add-pi-clock">Add Pi Clock</a>
+            <a class="mdl-navigation__link" href="/#/" ng-click="main.logout(); main.updateLoggedIn();">Logout</a>
           </nav>
           <!-- Logged In View -->
 
@@ -90,15 +86,18 @@
 
         <!--  PAGE TITLE -->
         <div class="mdl-layout__header-row">
-          <h1>
-            <!-- {{ main.title }} -->
-          </h1>
+          <h2>
+            <i class="material-icons clock-tray">av_timer</i>
+            {{ main.time }}
+          </h2>
         </div>
       </header>
       <div class="mdl-layout__drawer">
         <span class="mdl-layout__title">
           <i class="material-icons header-clock-tray">av_timer</i>
-          <span> {{ main.time }} </span>
+          <span>
+            {{ main.time }}
+          </span>
         </span>
 
         <!-- Not Logged In View -->
@@ -112,6 +111,7 @@
         <!-- Logged In View -->
         <nav class="mdl-navigation" ng-show="main.loggedIn">
           <a class="mdl-navigation__link" href="/#/piclocks">Your Pi Clocks</a>
+          <a class="mdl-navigation__link" href="/#/add-pi-clock">Add Pi Clock</a>
           <a class="mdl-navigation__link" href="/#/" ng-click="main.logout(); main.isLoggedIn();">Logout</a>
         </nav>
         <!-- Logged In View -->
@@ -120,7 +120,7 @@
       <!-- CONTENT CONTAINER -->
       <main class="mdl-layout__content">
 
-        <ng-view></ng-view>
+        <ng-view onload="main.updateLoggedIn();"></ng-view>
 
       </main>
       <!-- END CONTENT CONTAINER -->
@@ -143,13 +143,15 @@
 
     </div>
     <!--  JAVASCRIPT CDNS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.js"></script> -->
     <script type="text/javascript" src="https://cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js"></script>
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
     <!--  END JAVASCRIPT CDNS -->
 
     <!-- build:js(app/) ../../scripts/main.min.js -->
+    <script src="scripts/angular.js"></script>
+    <script src="scripts/angular-route.js"></script>
     <script src="scripts/main.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/services.js"></script>

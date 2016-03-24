@@ -21,8 +21,15 @@ app.config(function($routeProvider) {
       templateUrl: 'views/add-pi-clock.html',
       controller: 'AddClockController',
       controllerAs: 'addClockCtrl'
-    })
-    .otherwise({
+    }).when('/clocks', {
+      templateUrl: 'views/clocks.html',
+      controller: 'YourClocksController',
+      controllerAs: 'yourClocksCtrl'
+    }).when('/clock/:clockId', {
+      templateUrl: 'views/clock.html',
+      controller: 'ClockController',
+      controllerAs: 'ClockCtrl'
+    }).otherwise({
       redirectTo: '/'
     });
 });

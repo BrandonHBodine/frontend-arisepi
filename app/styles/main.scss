@@ -1,14 +1,23 @@
 body {
   background-color: #E3F2FD;
 }
-.demo-layout-transparent {
-  background: url('/images/nasa-lights.jpg') center / cover;
+
+//////////////////////////////
+// PAGE STYLES
+//////////////////////////////
+// Homepage styles
+.home-card {
+  margin: auto;
+  width: 80%;
 }
-.demo-layout-transparent .mdl-layout__header,
-.demo-layout-transparent .mdl-layout__drawer-button {
-  /* This background is dark, so we set text to white. Use 87% black instead if
-   your background is light. */
-  color: white;
+
+.home-card-icon {
+  font-size: 12em;
+}
+
+// Clock
+.clock-card-icon {
+  font-size: 8em;
 }
 
 // Material Design Lite Adjusters
@@ -21,10 +30,16 @@ body {
 .mdl-button--block {
   width: 100%;
 }
+
 // Header Styles
 header a {
   color: rgb(66, 66, 66);
   text-decoration: none;
+}
+
+.clock-tray {
+  font-size: 1em;
+  vertical-align: bottom;
 }
 
 .header-clock {
@@ -33,6 +48,7 @@ header a {
 .header-clock-tray {
   vertical-align: sub;
 }
+
 
 // Helper Classes
 .text-center {

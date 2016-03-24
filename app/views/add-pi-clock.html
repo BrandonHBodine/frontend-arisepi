@@ -1,46 +1,21 @@
-<form ng-submit="addClockCtrl.submit(addClockCtrl.user)" name="signup">
+<form ng-submit="addClockCtrl.submit(addClockCtrl.clock)" name="signup">
 
   <div class="mdl-grid top-margin mdl-shadow--2dp mdl-page">
     <div class="mdl-cell mdl-cell--12-col">
       <h1>{{ addClockCtrl.title }}</h1>
-      <p>Please enter your information to create your account and get started with Arise Pi.</p>
+      <p>Well this is an excting time for you! To get started with setting up your clock you are going to have ton configure your Raspberry Pi.</p>
+      <p> Place holder for instructions </p>
     </div>
     <div class="mdl-cell mdl-cell--4-col">
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="text" id="fname" name="fname" ng-model="addClockCtrl.user.fname">
-        <label class="mdl-textfield__label" for="fname">First name</label>
+        <input class="mdl-textfield__input" type="text" id="name" name="name" ng-model="addClockCtrl.clock.name">
+        <label class="mdl-textfield__label" for="name">Clock Name</label>
       </div>
     </div>
     <div class="mdl-cell mdl-cell--4-col">
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="text" id="lname" name="lname" ng-model="addClockCtrl.user.lname">
-        <label class="mdl-textfield__label" for="lname">Last name</label>
-      </div>
-    </div>
-    <div class="mdl-cell mdl-cell--4-col">
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="text" pattern="[0-9]*" id="phone" name="phone" ng-model="addClockCtrl.user.phone">
-        <label class="mdl-textfield__label" for="phone">Phone</label>
-        <span class="mdl-textfield__error">Digits only</span>
-      </div>
-    </div>
-    <div class="mdl-cell mdl-cell--4-col">
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="text" id="email" name="email" ng-model="addClockCtrl.user.email">
-        <label class="mdl-textfield__label" for="email">Email</label>
-      </div>
-    </div>
-    <div class="mdl-cell mdl-cell--4-col">
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="password" id="password" name="password" ng-model="addClockCtrl.user.password">
-        <label class="mdl-textfield__label" for="password">Password</label>
-      </div>
-    </div>
-    <div class="mdl-cell mdl-cell--4-col">
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="password" id="password2"
-        name="password2" ng-model="addClockCtrl.user.password2">
-        <label class="mdl-textfield__label" for="password">Verify Password</label>
+        <input class="mdl-textfield__input" type="text" id="ip" name="ip" ng-model="addClockCtrl.clock.ip">
+        <label class="mdl-textfield__label" for="ip"> IP Address </label>
       </div>
     </div>
     <div class="mdl-cell mdl-cell--12-col text-center">

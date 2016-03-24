@@ -5,15 +5,27 @@ var app = angular.module('arisePi');
 app.controller('MainController', ['$interval', 'authentication', MainController]);
 app.controller('SignupController', ['$http', 'authentication', 'mdlElementRegister', SignupController]);
 app.controller('LoginController', ['$http', 'authentication', 'mdlElementRegister', LoginController]);
-app.controller('AddClockController', ['$http', 'authentication', 'mdlElementRegister', AddClockController]);
+app.controller('AddClockController', ['$http', 'authentication', 'piclocks', 'mdlElementRegister', AddClockController]);
+app.controller('YourClocksController', ['$http', 'authentication', 'piclocks', 'mdlElementRegister', YourClocksController]);
+app.controller('ClockController', ['$http', '$routeParams', 'authentication', 'piclocks', 'mdlElementRegister', ClockController]);
 
 function MainController($interval, authentication) {
   var vm = this;
   vm.title = 'Arise Pi Main CTRL';
+
   vm.loggedIn = authentication.isLoggedIn();
   vm.logout = authentication.logout;
+  vm.updateLoggedIn = updateLoggedIn;
 
+  //Navbar function
+  function updateLoggedIn() {
+    vm.loggedIn = authentication.isLoggedIn();
+    console.log(vm.loggedIn);
+  }
+
+  // Clock Fucntion
   $interval(updateTime, 1000);
+
   function updateTime() {
     var date = new Date();
     vm.time = date.toLocaleTimeString();
@@ -37,9 +49,30 @@ function LoginController($http, authentication, mdlElementRegister) {
   vm.submit = authentication.login;
 }
 
-function AddClockController($http, authentication, mdlElementRegister) {
+function AddClockController($http, authentication, piclocks, mdlElementRegister) {
   mdlElementRegister.update();
   var vm = this;
   vm.title = 'Add a Pi Clock';
   vm.clock = {};
+  vm.submit = piclocks.addClock;
+}
+
+function YourClocksController($http, authentication, piclocks, mdlElementRegister) {
+  mdlElementRegister.update();
+  var vm = this;
+  vm.title = 'Your Clocks';
+  vm.yourClocks = [];
+  piclocks.yourClocks().then(function successCallback(response) {
+    vm.yourClocks = response.data;
+    return response;
+  }, function errorCallback(response) {
+    console.log(response);
+  });
+}
+
+function ClockController($http, $routeParams, authentication, piclocks, mdlElementRegister){
+  mdlElementRegister.update();
+  var vm = this;
+  vm.title = 'Clock Name';
+  vm.id = $routeParams.clockId;
 }

@@ -3,6 +3,9 @@ var app = angular.module('arisePi');
 
 // Handle Auth
 app.service('authentication', ['$window', '$http', '$location', authentication]);
+// Handle Clocks
+app.service('piclocks', ['$window', '$http', '$location', piclocks]);
+// Special MDL function to ensure forms work
 app.service('mdlElementRegister', [mdlElementRegister]);
 
 function authentication($window, $http, $location) {
@@ -61,7 +64,7 @@ function authentication($window, $http, $location) {
     isLoggedIn();
   };
 
-  var isLoggedIn = function(){
+  var isLoggedIn = function() {
     var token = getToken();
     if (token) {
       var payload = JSON.parse($window.atob(token.split('.')[1]));
@@ -74,7 +77,7 @@ function authentication($window, $http, $location) {
   };
 
   var userInfo = function() {
-    if(isLoggedIn()){
+    if (isLoggedIn()) {
       var token = getToken();
       var payload = JSON.parse($window.atob(token.split('.')[1]));
       return {
@@ -91,6 +94,47 @@ function authentication($window, $http, $location) {
     logout: logout,
     isLoggedIn: isLoggedIn,
     userInfo: userInfo
+  };
+}
+
+// Clock services
+function piclocks($window, $http, $location) {
+
+  var addClock = function(clock) {
+    // user is an object save from a form
+    return $http({
+      method: 'POST',
+      url: '//localhost:8080/clocks/add',
+      data: clock,
+      headers: {
+        Authorization: 'Bearer ' + JSON.parse($window.localStorage.jwt)
+      }
+    }).then(function successCallback(response) {
+      // this callback will be called asynchronously
+      // when the response is available
+      console.log('Congratulations you have Added a clock: ' + JSON.stringify(response));
+      $location.path('/clocks');
+    }, function errorCallback(response) {
+      // called asynchronously if an error occurs
+      // or server returns response with an error status.
+      console.log(response);
+    });
+  };
+
+  var yourClocks = function() {
+    // Pull JSON data of clocks associated with user
+    return $http({
+      method: 'GET',
+      url: '//localhost:8080/clocks/',
+      headers: {
+        Authorization: 'Bearer ' + JSON.parse($window.localStorage.jwt)
+      }
+    });
+  };
+
+  return {
+    addClock: addClock,
+    yourClocks: yourClocks
   };
 }
 
