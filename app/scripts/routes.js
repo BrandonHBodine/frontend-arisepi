@@ -1,7 +1,7 @@
 'use strict';
 var app = angular.module('arisePi');
 
-app.config(function($routeProvider) {
+app.config(['$routeProvider' , function($routeProvider) {
   $routeProvider
     .when('/', {
       templateUrl: 'views/home.html'
@@ -32,4 +32,4 @@ app.config(function($routeProvider) {
     }).otherwise({
       redirectTo: '/'
     });
-});
+}]);

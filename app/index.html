@@ -53,7 +53,7 @@
 
   </head>
 
-  <body ng-app="arisePi">
+  <body ng-app="arisePi" ng-strict-di>
 
     <div class="mdl-layout mdl-js-layout" ng-controller="MainController as main">
       <header class="mdl-layout__header mdl-layout__header--waterfall">
@@ -145,13 +145,15 @@
     <!--  JAVASCRIPT CDNS -->
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.js"></script> -->
-    <script type="text/javascript" src="https://cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js"></script>
-    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+    <!-- <script type="text/javascript" src="https://cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js"></script>
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script> -->
     <!--  END JAVASCRIPT CDNS -->
 
     <!-- build:js(app/) ../../scripts/main.min.js -->
     <script src="scripts/angular.js"></script>
     <script src="scripts/angular-route.js"></script>
+    <script src="scripts/angular-jwt.js"></script>
+    <script src="scripts/material.js"></script>
     <script src="scripts/main.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/services.js"></script>

@@ -17,13 +17,13 @@ function authInterceptor($rootScope, $q, $window) {
 
     response: function(response) {
       if (response.status === 401) {
-        console.log('Shit your interceptor is not working :()');
+        console.log('Error 401 Unauthorized');
       }
       return response || $q.when(response);
     }
   };
 }
 
-app.config(function($httpProvider) {
+app.config(['$httpProvider', function($httpProvider) {
   $httpProvider.interceptors.push('authInterceptor');
-});
+}]);

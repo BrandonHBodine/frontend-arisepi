@@ -19,6 +19,7 @@
   "dependencies": {
     "angular-jwt": "^0.0.9",
     "angular-route": "^1.5.2",
-    "angular": "^1.5.2"
+    "angular": "^1.5.2",
+    "material-design-lite": "^1.1.3"
   }
 }
