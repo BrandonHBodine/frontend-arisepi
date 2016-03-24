@@ -1,9 +1,32 @@
 <div class="mdl-grid mdl-page top-margin mdl-shadow--1dp">
 
-  <div class="mdl-cell mdl-cell--12-col text-center" ng-show="main.loggedIn">
+  <div class="mdl-cell mdl-cell--12-col" ng-show="main.loggedIn">
     <h1>
-      {{ ClockCtrl.title }}
+      {{ clockCtrl.clockName }}
     </h1>
-    <h2> {{ ClockCtrl.id }} </h2>
+    <h2> {{ clockCtrl.clockId }} </h2>
+    <h2> {{ clockCtrl.clockIp }} </h2>
+  </div>
+  <div class="mdl-cell mdl-cell--12-col">
+    <form ng-submit="clockCtrl.submit(clockCtrl.user)" name="signup">
+      <div class="mdl-grid top-margin mdl-shadow--2dp mdl-page">
+        <div class="mdl-cell mdl-cell--12-col">
+          <h3>Add Alarm</h3>
+          <p>Please enter your information to create your account and get started with Arise Pi.</p>
+        </div>
+        <div class="mdl-cell mdl-cell--4-col">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="fname" name="fname" ng-model="clockCtrl.user.fname">
+            <label class="mdl-textfield__label" for="fname">Alarm Name</label>
+          </div>
+        </div>
+        <div class="mdl-cell mdl-cell--12-col text-center">
+          <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-button--block">
+            Add Alarm
+          </button>
+        </div>
+      </div>
+
+    </form>
   </div>
 </div>

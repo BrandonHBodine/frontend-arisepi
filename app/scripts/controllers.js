@@ -72,7 +72,17 @@ function YourClocksController($http, authentication, piclocks, mdlElementRegiste
 
 function ClockController($http, $routeParams, authentication, piclocks, mdlElementRegister){
   mdlElementRegister.update();
+  var id = $routeParams.clockId;
   var vm = this;
-  vm.title = 'Clock Name';
-  vm.id = $routeParams.clockId;
+  vm.clockName = 'Unavaliable';
+  vm.clockId = 'Unavaliable';
+  vm.clockIp = 'Unavaliable'
+  piclocks.getClock(id).then(function successCallback(response) {
+    vm.clockName = response.data[0].name;
+    vm.clockId = response.data[0].id;
+    vm.clockIp = response.data[0].ip;
+    console.log(response);
+  }, function errorCallback(response) {
+    console.log(response);
+  });
 }
