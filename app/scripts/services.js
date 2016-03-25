@@ -143,33 +143,33 @@ function piclocks($window, $http, $location) {
     });
   };
 
-  var yourAlarms = function(id) {
+  var yourAlarms = function(clockIp) {
     // Pull JSON data of alarms associated with clock
     return $http({
       method: 'GET',
-      url: '//localhost:3002/',
+      url: '//' + clockIp + '/alarms',
       headers: {
         Authorization: 'Bearer ' + JSON.parse($window.localStorage.jwt)
       }
     });
   };
 
-  var addAlarm = function(id, alarm) {
+  var addAlarm = function(clockIp, alarm) {
     return $http({
       method: 'POST',
-      url: '//localhost:3002/' + id + '/add',
+      url: '//' + clockIp + '/alarms/add',
       data: alarm
     }).then(function successCallback(response) {
       // this callback will be called asynchronously
       // when the response is available
       console.log('Congratulations you have Added a clock: ' + JSON.stringify(response));
-      $location.path('/clocks');
     }, function errorCallback(response) {
       // called asynchronously if an error occurs
       // or server returns response with an error status.
       console.log(response);
     });
-  }
+  };
+
   return {
     addClock: addClock,
     yourClocks: yourClocks,

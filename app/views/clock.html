@@ -4,11 +4,34 @@
     <h1>
       {{ clockCtrl.clockName }}
     </h1>
-    <h2> {{ clockCtrl.clockId }} </h2>
-    <h2> {{ clockCtrl.clockIp }} </h2>
+    <h2>
+      {{ clockCtrl.clockId }}
+    </h2>
+    <h2>
+      {{ clockCtrl.clockIp }}
+    </h2>
+    <!--
+    name: 'WakeyWakey',
+    sun: true,
+    mon: true,
+    tue: true,
+    wed: true,
+    thu: true,
+    fri: true,
+    sat: true,
+    am: false,
+    pm: true,
+    hour: 9,
+    min: 25,
+    created_at: new Date().toUTCString(),
+    updated_at: new Date().toUTCString()
+
+  -->
+
   </div>
   <div class="mdl-cell mdl-cell--12-col">
-    <form ng-submit="clockCtrl.submit(clockCtrl.user)" name="signup">
+
+    <form ng-submit="clockCtrl.addAlarm(clockCtrl.clockIp, clockCtrl.alarm)" name="addAlarm">
       <div class="mdl-grid top-margin mdl-shadow--2dp mdl-page">
         <div class="mdl-cell mdl-cell--12-col">
           <h3>Add Alarm</h3>
@@ -16,10 +39,53 @@
         </div>
         <div class="mdl-cell mdl-cell--4-col">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="fname" name="fname" ng-model="clockCtrl.user.fname">
-            <label class="mdl-textfield__label" for="fname">Alarm Name</label>
+            <input class="mdl-textfield__input" type="text" id="name" name="name" ng-model="clockCtrl.alarm.name">
+            <label class="mdl-textfield__label" for="name">Alarm Name</label>
           </div>
         </div>
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="sun">
+          <input type="checkbox" id="sun" class="mdl-checkbox__input" ng-model="clockCtrl.alarm.sun">
+          <span class="mdl-checkbox__label">Sunday</span>
+        </label>
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="mon">
+          <input type="checkbox" id="mon" class="mdl-checkbox__input" ng-model="clockCtrl.alarm.mon">
+          <span class="mdl-checkbox__label">Monday</span>
+        </label>
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="tue">
+          <input type="checkbox" id="tue" class="mdl-checkbox__input" ng-model="clockCtrl.alarm.tue">
+          <span class="mdl-checkbox__label">Tuesday</span>
+        </label>
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="wed">
+          <input type="checkbox" id="wed" class="mdl-checkbox__input" ng-model="clockCtrl.alarm.wed">
+          <span class="mdl-checkbox__label">Wednesday</span>
+        </label>
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="thu">
+          <input type="checkbox" id="thu" class="mdl-checkbox__input" ng-model="clockCtrl.alarm.thu">
+          <span class="mdl-checkbox__label">Thursday</span>
+        </label>
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="fri">
+          <input type="checkbox" id="fri" class="mdl-checkbox__input" ng-model="clockCtrl.alarm.fri">
+          <span class="mdl-checkbox__label">Friday</span>
+        </label>
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="sat">
+          <input type="checkbox" id="sat" class="mdl-checkbox__input" ng-model="clockCtrl.alarm.sat">
+          <span class="mdl-checkbox__label">Saturday</span>
+        </label>
+
+        <div class="mdl-cell mdl-cell--4-col">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="number" id="hour" name="hour" ng-model="clockCtrl.alarm.hour">
+            <label class="mdl-textfield__label" for="hour">Hour</label>
+          </div>
+        </div>
+
+        <div class="mdl-cell mdl-cell--4-col">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="number" id="min" name="min" ng-model="clockCtrl.alarm.min">
+            <label class="mdl-textfield__label" for="min">Minute</label>
+          </div>
+        </div>
+
         <div class="mdl-cell mdl-cell--12-col text-center">
           <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-button--block">
             Add Alarm

@@ -70,19 +70,32 @@ function YourClocksController($http, authentication, piclocks, mdlElementRegiste
   });
 }
 
-function ClockController($http, $routeParams, authentication, piclocks, mdlElementRegister){
+function ClockController($http, $routeParams, authentication, piclocks, mdlElementRegister) {
   mdlElementRegister.update();
   var id = $routeParams.clockId;
   var vm = this;
+  vm.alarm = {};
   vm.clockName = 'Unavaliable';
   vm.clockId = 'Unavaliable';
-  vm.clockIp = 'Unavaliable'
+  vm.clockIp = 'Unavaliable';
+  vm.addAlarm = piclocks.addAlarm;
+
+  // Execute on pageload
   piclocks.getClock(id).then(function successCallback(response) {
     vm.clockName = response.data[0].name;
     vm.clockId = response.data[0].id;
     vm.clockIp = response.data[0].ip;
-    console.log(response);
+    return response;
   }, function errorCallback(response) {
     console.log(response);
+  }).then(function(response) {
+    var ip = response.data[0].ip;
+    console.log(response);
+    piclocks.yourAlarms(ip).then(function successCallback(alarmRes){
+      console.log(alarmRes);
+    }, function errorCallback(alarmRes) {
+      console.log(alarmRes);
+    });
   });
+
 }
