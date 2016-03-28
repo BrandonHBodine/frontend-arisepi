@@ -120,6 +120,14 @@ function AlarmController($http, $routeParams, authentication, piclocks, mdlEleme
   vm.clockName = 'Unavaliable';
   vm.clockId = 'Unavaliable';
   vm.clockIp = 'Unavaliable';
+  vm.q1 = getRandomIntInclusive(1, 10);
+  vm.q2 = getRandomIntInclusive(1, 10);
+  vm.q3 = getRandomIntInclusive(1, 10);
+
+  vm.turnOffAlarm = function(clockIp){
+    piclocks.turnOffLed(clockIp);
+    piclocks.turnOffMp3(clockIp);
+  };
 
   vm.parseClockData = function(response) {
     vm.clockName = response.data[0].name;
@@ -132,4 +140,8 @@ function AlarmController($http, $routeParams, authentication, piclocks, mdlEleme
   piclocks.getClock(id).then(vm.parseClockData, vm.errorCallback).then(function(response) {
     var ip = response.data[0].ip;
   });
+
+  function getRandomIntInclusive(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
 }
