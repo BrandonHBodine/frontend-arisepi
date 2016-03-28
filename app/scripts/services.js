@@ -154,7 +154,8 @@ function piclocks($window, $http, $location) {
     });
   };
 
-  var addAlarm = function(clockIp, alarm) {
+  var addAlarm = function(clockIp, alarm, clockId) {
+    var clockPath = '/clock/' + clockId;
     return $http({
       method: 'POST',
       url: '//' + clockIp + '/alarms/add',
@@ -163,6 +164,24 @@ function piclocks($window, $http, $location) {
       // this callback will be called asynchronously
       // when the response is available
       console.log('Congratulations you have Added a clock: ' + JSON.stringify(response));
+      $location.url(clockPath);
+    }, function errorCallback(response) {
+      // called asynchronously if an error occurs
+      // or server returns response with an error status.
+      console.log(response);
+    });
+  };
+
+  var deleteAlarm = function(clockIp, alarmId, clockId) {
+    var clockPath = '/clock/' + clockId;
+    return $http({
+      method: 'DELETE',
+      url: '//' + clockIp + '/alarms/' + alarmId
+    }).then(function successCallback(response) {
+      // this callback will be called asynchronously
+      // when the response is available
+      console.log('Alarm Deleted: ' + JSON.stringify(response));
+      $location.url(clockPath);
     }, function errorCallback(response) {
       // called asynchronously if an error occurs
       // or server returns response with an error status.
@@ -175,7 +194,8 @@ function piclocks($window, $http, $location) {
     yourClocks: yourClocks,
     getClock: getClock,
     yourAlarms: yourAlarms,
-    addAlarm: addAlarm
+    addAlarm: addAlarm,
+    deleteAlarm: deleteAlarm
   };
 }
 

@@ -1,0 +1,99 @@
+<form ng-submit="clockCtrl.addAlarm(clockCtrl.clockIp, clockCtrl.alarm, clockCtrl.id)" name="addAlarm">
+  <div class="mdl-grid mdl-page top-margin mdl-shadow--2dp">
+    <div class="mdl-cell mdl-cell--12-col">
+      <h3>Add Alarm</h3>
+      <p>Please enter your information to create your account and get started with Arise Pi.</p>
+    </div>
+    <div class="mdl-cell mdl-cell--4-col">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" id="name" name="name" ng-model="clockCtrl.alarm.name">
+        <label class="mdl-textfield__label" for="name">Alarm Name</label>
+      </div>
+    </div>
+
+    <div class="mdl-cell mdl-cell--3-col">
+
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="hour" name="hour" ng-model="clockCtrl.alarm.hour" min="1" max="12" ng-minlength="1" ng-maxlength="2">
+        <label class="mdl-textfield__label" for="hour">
+          Hour
+        </label>
+        <span class="mdl-textfield__error">Input is not a valid number!</span>
+      </div>
+
+    </div>
+
+    <div class="mdl-cell mdl-cell--3-col">
+
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="min" name="min" ng-model="clockCtrl.alarm.min" min="1" max="59" ng-minlength="1" ng-maxlength="2">
+        <label class="mdl-textfield__label" for="min">
+          Minutes
+        </label>
+        <span class="mdl-textfield__error">Input is not a valid number!</span>
+      </div>
+
+    </div>
+    <div class="mdl-cell mdl-cell--2-col">
+      <label for="am" class="mdl-switch mdl-js-switch mdl-js-ripple-effect">
+        <input type="checkbox" id="am" name="am" class="mdl-switch__input" ng-model="clockCtrl.alarm.am">
+        <span class="mdl-switch__label">AM</span>
+      </label>
+      <label for="pm" class="mdl-switch mdl-js-switch mdl-js-ripple-effect">
+        <input type="checkbox" id="pm" name="pm" class="mdl-switch__input" ng-model="clockCtrl.alarm.pm">
+        <span class="mdl-switch__label">PM</span>
+      </label>
+    </div>
+    <div class="mdl-cell mdl-cell--4-col">
+      <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="sun">
+        <input type="checkbox" id="sun" class="mdl-checkbox__input" ng-model="clockCtrl.alarm.sun">
+        <span class="mdl-checkbox__label">Sunday</span>
+      </label>
+      <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="mon">
+        <input type="checkbox" id="mon" class="mdl-checkbox__input" ng-model="clockCtrl.alarm.mon">
+        <span class="mdl-checkbox__label">Monday</span>
+      </label>
+      <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="tue">
+        <input type="checkbox" id="tue" class="mdl-checkbox__input" ng-model="clockCtrl.alarm.tue">
+        <span class="mdl-checkbox__label">Tuesday</span>
+      </label>
+      <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="wed">
+        <input type="checkbox" id="wed" class="mdl-checkbox__input" ng-model="clockCtrl.alarm.wed">
+        <span class="mdl-checkbox__label">Wednesday</span>
+      </label>
+      <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="thu">
+        <input type="checkbox" id="thu" class="mdl-checkbox__input" ng-model="clockCtrl.alarm.thu">
+        <span class="mdl-checkbox__label">Thursday</span>
+      </label>
+      <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="fri">
+        <input type="checkbox" id="fri" class="mdl-checkbox__input" ng-model="clockCtrl.alarm.fri">
+        <span class="mdl-checkbox__label">Friday</span>
+      </label>
+      <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="sat">
+        <input type="checkbox" id="sat" class="mdl-checkbox__input" ng-model="clockCtrl.alarm.sat">
+        <span class="mdl-checkbox__label">Saturday</span>
+      </label>
+    </div>
+    <div class="mdl-cell mdl-cell--4-col">
+      <h3>
+        {{ clockCtrl.alarm.hour }}:{{ clockCtrl.alarm.min }}
+        <span ng-show="clockCtrl.alarm.am">
+          AM
+        </span>
+
+        <span ng-show="(clockCtrl.alarm.am && clockCtrl.alarm.pm )">
+          and
+        </span>
+
+        <span ng-show="clockCtrl.alarm.pm">
+          PM
+        </span>
+      </h3>
+    </div>
+    <div class="mdl-cell mdl-cell--12-col text-center">
+      <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-button--block">
+        Add Alarm
+      </button>
+    </div>
+  </div>
+</form>

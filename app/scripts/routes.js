@@ -29,6 +29,14 @@ app.config(['$routeProvider' , function($routeProvider) {
       templateUrl: 'views/clock.html',
       controller: 'ClockController',
       controllerAs: 'clockCtrl'
+    }).when('/clock/:clockId/add-alarm', {
+      templateUrl: 'views/add-alarm.html',
+      controller: 'ClockController',
+      controllerAs: 'clockCtrl'
+    }).when('/clock/:clockId/delete-alarm/:alarmId', {
+      templateUrl: 'views/delete-alarm.html',
+      controller: 'ClockController',
+      controllerAs: 'clockCtrl'
     }).otherwise({
       redirectTo: '/'
     });

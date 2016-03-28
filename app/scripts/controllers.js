@@ -74,28 +74,36 @@ function ClockController($http, $routeParams, authentication, piclocks, mdlEleme
   mdlElementRegister.update();
   var id = $routeParams.clockId;
   var vm = this;
+  vm.id = id;
   vm.alarm = {};
+  vm.alarms = [];
   vm.clockName = 'Unavaliable';
   vm.clockId = 'Unavaliable';
   vm.clockIp = 'Unavaliable';
+  vm.getClock =  piclocks.getClock;
   vm.addAlarm = piclocks.addAlarm;
+  vm.deleteAlarm = piclocks.deleteAlarm;
 
-  // Execute on pageload
-  piclocks.getClock(id).then(function successCallback(response) {
+  // Callbacks so we can envoke more complex functions with ng-click
+  vm.parseClockdata = function(response) {
     vm.clockName = response.data[0].name;
     vm.clockId = response.data[0].id;
     vm.clockIp = response.data[0].ip;
     return response;
-  }, function errorCallback(response) {
+  };
+  vm.errorCallback =  function(response) {
     console.log(response);
-  }).then(function(response) {
+  };
+
+  // Execute on pageload
+  piclocks.getClock(id).then(vm.parseClockdata, vm.errorCallback).then(function(response) {
     var ip = response.data[0].ip;
-    console.log(response);
     piclocks.yourAlarms(ip).then(function successCallback(alarmRes){
-      console.log(alarmRes);
+       vm.alarms = alarmRes.data;
     }, function errorCallback(alarmRes) {
       console.log(alarmRes);
     });
   });
+
 
 }
