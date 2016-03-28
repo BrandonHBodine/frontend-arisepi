@@ -120,9 +120,10 @@ function AlarmController($http, $routeParams, authentication, piclocks, mdlEleme
   vm.clockName = 'Unavaliable';
   vm.clockId = 'Unavaliable';
   vm.clockIp = 'Unavaliable';
-  vm.q1 = getRandomIntInclusive(1, 10);
-  vm.q2 = getRandomIntInclusive(1, 10);
-  vm.q3 = getRandomIntInclusive(1, 10);
+  vm.compareGuessAnswer = compareGuessAnswer;
+  vm.q1 = getProblem();
+  vm.q2 = getProblem();
+  vm.q3 = getProblem();
 
   vm.turnOffAlarm = function(clockIp){
     piclocks.turnOffLed(clockIp);
@@ -141,6 +142,27 @@ function AlarmController($http, $routeParams, authentication, piclocks, mdlEleme
     var ip = response.data[0].ip;
   });
 
+  function getProblem(){
+    var problem = {};
+    problem.a = getRandomIntInclusive(1,10);
+    problem.b = getRandomIntInclusive(1,10);
+    problem.c = getRandomIntInclusive(1,10);
+    problem.d = getRandomIntInclusive(1,10);
+    problem.answer = problem.a + problem.b + problem.c + problem.d;
+    problem.isSolved = false;
+    problem.guess= '';
+    return problem;
+  }
+
+  function compareGuessAnswer(qobj){
+    if (qobj.guess === qobj.answer ) {
+      qobj.isSolved = true;
+    } else {
+      qobj.isSolved = false;
+    }
+    console.log(qobj.guess);
+    console.log(qobj.answer);
+  }
   function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
