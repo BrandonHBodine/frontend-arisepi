@@ -1,6 +1,8 @@
 'use strict';
 var app = angular.module('arisePi');
-
+var dev = 'http://localhost:8080';
+var deploy = 'https://mighty-chamber-37987.herokuapp.com';
+var host = deploy;
 // Handle Auth
 app.service('authentication', ['$window', '$http', '$location', authentication]);
 // Handle Clocks
@@ -24,7 +26,7 @@ function authentication($window, $http, $location) {
     // user is an object save from a form
     return $http({
       method: 'POST',
-      url: 'http://localhost:8080/users/signup',
+      url: host + '/users/signup',
       data: user
     }).then(function successCallback(response) {
       // this callback will be called asynchronously
@@ -41,7 +43,7 @@ function authentication($window, $http, $location) {
     // user is an object save from a form
     return $http({
       method: 'POST',
-      url: 'http://localhost:8080/users/login',
+      url: host + '/users/login',
       data: user
     }).then(function successCallback(response) {
       // Token is stored in response.data
@@ -104,7 +106,7 @@ function piclocks($window, $http, $location) {
     // user is an object save from a form
     return $http({
       method: 'POST',
-      url: 'http://localhost:8080/clocks/add',
+      url: host + '/clocks/add',
       data: clock,
       headers: {
         Authorization: 'Bearer ' + JSON.parse($window.localStorage.jwt)
@@ -125,7 +127,7 @@ function piclocks($window, $http, $location) {
     // Pull JSON data of clocks associated with user
     return $http({
       method: 'GET',
-      url: 'http://localhost:8080/clocks/',
+      url: host + '/clocks/',
       headers: {
         Authorization: 'Bearer ' + JSON.parse($window.localStorage.jwt)
       }
@@ -136,7 +138,7 @@ function piclocks($window, $http, $location) {
     // Pull JSON data of alarms associated with clock
     return $http({
       method: 'GET',
-      url: 'http://localhost:8080/clocks/' + id,
+      url: host + '/clocks/' + id,
       headers: {
         Authorization: 'Bearer ' + JSON.parse($window.localStorage.jwt)
       }
@@ -147,7 +149,7 @@ function piclocks($window, $http, $location) {
     // Pull JSON data of alarms associated with clock
     return $http({
       method: 'GET',
-      url: '//' + clockIp + '/alarms',
+      url: 'http://' + clockIp + '/alarms',
       headers: {
         Authorization: 'Bearer ' + JSON.parse($window.localStorage.jwt)
       }
@@ -158,7 +160,7 @@ function piclocks($window, $http, $location) {
     var clockPath = '/clock/' + clockId;
     return $http({
       method: 'POST',
-      url: '//' + clockIp + '/alarms/add',
+      url: 'http://' + clockIp + '/alarms/add',
       data: alarm
     }).then(function successCallback(response) {
       // this callback will be called asynchronously
@@ -176,7 +178,7 @@ function piclocks($window, $http, $location) {
     var clockPath = '/clock/' + clockId;
     return $http({
       method: 'DELETE',
-      url: '//' + clockIp + '/alarms/' + alarmId
+      url: 'http://' + clockIp + '/alarms/' + alarmId
     }).then(function successCallback(response) {
       // this callback will be called asynchronously
       // when the response is available
@@ -190,7 +192,7 @@ function piclocks($window, $http, $location) {
   };
 
   var turnOffLed = function(clockIp) {
-    var ledPath = '//' + clockIp + '/ledControls/off';
+    var ledPath = 'http://' + clockIp + '/ledControls/off';
     return $http({
       method: 'GET',
       url: ledPath
@@ -198,7 +200,7 @@ function piclocks($window, $http, $location) {
   };
 
   var turnOffMp3 = function(clockIp) {
-    var mp3Path = '//' + clockIp + '/mp3Controls/off';
+    var mp3Path = 'http://' + clockIp + '/mp3Controls/off';
     return $http({
       method: 'GET',
       url: mp3Path
