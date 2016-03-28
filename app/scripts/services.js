@@ -189,13 +189,22 @@ function piclocks($window, $http, $location) {
     });
   };
 
+  var turnOffAlarm = function(clockIp) {
+    var ledPath = clockIp + '/ledControls/on';
+    var mp3Path = clockIp + '/mp3Controls/on';
+    return $http({
+      method: 'GET',
+    });
+  };
+
   return {
     addClock: addClock,
     yourClocks: yourClocks,
     getClock: getClock,
     yourAlarms: yourAlarms,
     addAlarm: addAlarm,
-    deleteAlarm: deleteAlarm
+    deleteAlarm: deleteAlarm,
+    turnOffAlarm: turnOffAlarm
   };
 }
 

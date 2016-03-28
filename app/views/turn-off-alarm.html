@@ -1,0 +1,14 @@
+<div class="mdl-grid mdl-page top-margin mdl-shadow--1dp">
+  <div class="mdl-cell mdl-cell--12-col" ng-show="main.loggedIn">
+    <h1>
+      {{ alarmCtrl.title }}
+      {{ alarmCtrl.clockIp }}
+    </h1>
+  </div>
+  <div class="mdl-cell mdl-cell--12-col">
+    <h4>Congratulations, You can turn off your alarm now! Don't forget to get ut of bed though.</h4>
+    <button ng-click="alarmCtrl.turnOffAlarm(alarmCtrl.clockIp)" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+      Turn Alarm Off
+    </button>
+  </div>
+</div>

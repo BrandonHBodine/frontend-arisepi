@@ -8,6 +8,8 @@ app.controller('LoginController', ['$http', 'authentication', 'mdlElementRegiste
 app.controller('AddClockController', ['$http', 'authentication', 'piclocks', 'mdlElementRegister', AddClockController]);
 app.controller('YourClocksController', ['$http', 'authentication', 'piclocks', 'mdlElementRegister', YourClocksController]);
 app.controller('ClockController', ['$http', '$routeParams', 'authentication', 'piclocks', 'mdlElementRegister', ClockController]);
+app.controller('AlarmController', ['$http', '$routeParams', 'authentication', 'piclocks', 'mdlElementRegister', AlarmController]);
+
 
 function MainController($interval, authentication) {
   var vm = this;
@@ -107,5 +109,27 @@ function ClockController($http, $routeParams, authentication, piclocks, mdlEleme
     piclocks.yourAlarms(ip).then(vm.parseAlarmData, vm.errorCallback);
   });
 
+}
 
+function AlarmController($http, $routeParams, authentication, piclocks, mdlElementRegister) {
+  mdlElementRegister.update();
+  var id = $routeParams.clockId;
+  var vm = this;
+  vm.id = id;
+  vm.title = 'Alarm Shut Off';
+  vm.clockName = 'Unavaliable';
+  vm.clockId = 'Unavaliable';
+  vm.clockIp = 'Unavaliable';
+
+  vm.parseClockData = function(response) {
+    vm.clockName = response.data[0].name;
+    vm.clockId = response.data[0].id;
+    vm.clockIp = response.data[0].ip;
+    return response;
+  };
+
+  // Execute on pageload
+  piclocks.getClock(id).then(vm.parseClockData, vm.errorCallback).then(function(response) {
+    var ip = response.data[0].ip;
+  });
 }

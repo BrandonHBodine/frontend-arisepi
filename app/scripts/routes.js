@@ -33,6 +33,10 @@ app.config(['$routeProvider' , function($routeProvider) {
       templateUrl: 'views/add-alarm.html',
       controller: 'ClockController',
       controllerAs: 'clockCtrl'
+    }).when('/clock/:clockId/alarm-off', {
+      templateUrl: 'views/turn-off-alarm.html',
+      controller: 'AlarmController',
+      controllerAs: 'alarmCtrl'
     }).when('/clock/:clockId/delete-alarm/:alarmId', {
       templateUrl: 'views/delete-alarm.html',
       controller: 'ClockController',
