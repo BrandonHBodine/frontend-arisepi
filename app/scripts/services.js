@@ -24,7 +24,7 @@ function authentication($window, $http, $location) {
     // user is an object save from a form
     return $http({
       method: 'POST',
-      url: '//localhost:8080/users/signup',
+      url: 'http://localhost:8080/users/signup',
       data: user
     }).then(function successCallback(response) {
       // this callback will be called asynchronously
@@ -41,7 +41,7 @@ function authentication($window, $http, $location) {
     // user is an object save from a form
     return $http({
       method: 'POST',
-      url: '//localhost:8080/users/login',
+      url: 'http://localhost:8080/users/login',
       data: user
     }).then(function successCallback(response) {
       // Token is stored in response.data
@@ -104,7 +104,7 @@ function piclocks($window, $http, $location) {
     // user is an object save from a form
     return $http({
       method: 'POST',
-      url: '//localhost:8080/clocks/add',
+      url: 'http://localhost:8080/clocks/add',
       data: clock,
       headers: {
         Authorization: 'Bearer ' + JSON.parse($window.localStorage.jwt)
@@ -125,7 +125,7 @@ function piclocks($window, $http, $location) {
     // Pull JSON data of clocks associated with user
     return $http({
       method: 'GET',
-      url: '//localhost:8080/clocks/',
+      url: 'http://localhost:8080/clocks/',
       headers: {
         Authorization: 'Bearer ' + JSON.parse($window.localStorage.jwt)
       }
@@ -136,7 +136,7 @@ function piclocks($window, $http, $location) {
     // Pull JSON data of alarms associated with clock
     return $http({
       method: 'GET',
-      url: '//localhost:8080/clocks/' + id,
+      url: 'http://localhost:8080/clocks/' + id,
       headers: {
         Authorization: 'Bearer ' + JSON.parse($window.localStorage.jwt)
       }
