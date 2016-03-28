@@ -80,29 +80,31 @@ function ClockController($http, $routeParams, authentication, piclocks, mdlEleme
   vm.clockName = 'Unavaliable';
   vm.clockId = 'Unavaliable';
   vm.clockIp = 'Unavaliable';
-  vm.getClock =  piclocks.getClock;
+  vm.getClock = piclocks.getClock;
+  vm.yourAlarms = piclocks.yourAlarms;
   vm.addAlarm = piclocks.addAlarm;
   vm.deleteAlarm = piclocks.deleteAlarm;
 
   // Callbacks so we can envoke more complex functions with ng-click
-  vm.parseClockdata = function(response) {
+  vm.parseClockData = function(response) {
     vm.clockName = response.data[0].name;
     vm.clockId = response.data[0].id;
     vm.clockIp = response.data[0].ip;
     return response;
   };
-  vm.errorCallback =  function(response) {
+
+  vm.parseAlarmData = function(alarmRes) {
+    vm.alarms = alarmRes.data;
+  };
+
+  vm.errorCallback = function(response) {
     console.log(response);
   };
 
   // Execute on pageload
-  piclocks.getClock(id).then(vm.parseClockdata, vm.errorCallback).then(function(response) {
+  piclocks.getClock(id).then(vm.parseClockData, vm.errorCallback).then(function(response) {
     var ip = response.data[0].ip;
-    piclocks.yourAlarms(ip).then(function successCallback(alarmRes){
-       vm.alarms = alarmRes.data;
-    }, function errorCallback(alarmRes) {
-      console.log(alarmRes);
-    });
+    piclocks.yourAlarms(ip).then(vm.parseAlarmData, vm.errorCallback);
   });
 
 

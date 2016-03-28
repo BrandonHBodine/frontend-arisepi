@@ -17,33 +17,54 @@
     </a>
   </div>
 
-
   <div class="mdl-cell mdl-cell--4-col" ng-repeat="alarm in clockCtrl.alarms">
     <div class="mdl-card mdl-shadow--2dp">
       <div class="mdl-card__title">
-        <h4 class="mdl-card__title-text">{{ alarm.name }} {{ alarm.hour }}:{{ alarm.min }} </h4>
-
-        <div class="mdl-card__subtitle-text" ng-show="alarm.am"> AM </div>
-        <div class="mdl-card__subtitle-text" ng-show="(alarm.am && alarm.pm)"> + </div>
-        <div class="mdl-card__subtitle-text" ng-show="alarm.pm"> PM </div>
+        <h4 class="mdl-card__title-text">{{ alarm.name }}
+          {{ alarm.hour }}:{{ alarm.min }}
+        </h4>
+        <div class="mdl-card__subtitle-text" ng-show="alarm.am">
+          AM
+        </div>
+        <div class="mdl-card__subtitle-text" ng-show="(alarm.am && alarm.pm)">
+          +
+        </div>
+        <div class="mdl-card__subtitle-text" ng-show="alarm.pm">
+          PM
+        </div>
       </div>
       <div class="mdl-card__supporting-text">
         <p>{{ alarm.id }}</p>
-        <ul> Days on:
-          <li ng-show="alarm.sun"> Sunday </li>
-          <li ng-show="alarm.mon"> Monday </li>
-          <li ng-show="alarm.tue"> Tuesday </li>
-          <li ng-show="alarm.wed"> Wednesday </li>
-          <li ng-show="alarm.thu"> Thursday </li>
-          <li ng-show="alarm.fri"> Friday </li>
-          <li ng-show="alarm.sat"> Saturday </li>
+        <ul>
+          Days on:
+          <li ng-show="alarm.sun">
+            Sunday
+          </li>
+          <li ng-show="alarm.mon">
+            Monday
+          </li>
+          <li ng-show="alarm.tue">
+            Tuesday
+          </li>
+          <li ng-show="alarm.wed">
+            Wednesday
+          </li>
+          <li ng-show="alarm.thu">
+            Thursday
+          </li>
+          <li ng-show="alarm.fri">
+            Friday
+          </li>
+          <li ng-show="alarm.sat">
+            Saturday
+          </li>
         </ul>
       </div>
       <div class="mdl-card__actions">
         <a ng-href="/#/clock/{{clock.id}}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
           Edit Alarm
         </a>
-        <button ng-click="clockCtrl.deleteAlarm(clockCtrl.clockIp, alarm.id, clockCtrl.clockId ).then()" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+        <button ng-click="clockCtrl.deleteAlarm(clockCtrl.clockIp, alarm.id, clockCtrl.clockId)" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
           Delete Alarm
         </button>
       </div>
