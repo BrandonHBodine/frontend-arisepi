@@ -24,7 +24,7 @@
     <div class="mdl-card mdl-shadow--2dp">
       <div class="mdl-card__title">
         <h4 class="mdl-card__title-text">{{ alarm.name }}
-          {{ alarm.hour }}:{{ alarm.min }}
+          {{ alarm.hour }}:<span ng-show="(alarm.min < 10)">0</span>{{ alarm.min }}
         </h4>
         <div class="mdl-card__subtitle-text" ng-show="alarm.am">
           AM

@@ -1,25 +1,34 @@
-<form ng-submit="addClockCtrl.submit(addClockCtrl.clock)" name="signup">
+<form ng-submit="addClockCtrl.submit(addClockCtrl.clock)" name="addClockForm">
 
   <div class="mdl-grid top-margin mdl-shadow--2dp mdl-page">
     <div class="mdl-cell mdl-cell--12-col">
       <h1>{{ addClockCtrl.title }}</h1>
       <p>Well this is an excting time for you! To get started with setting up your clock you are going to have ton configure your Raspberry Pi.</p>
-      <p> Place holder for instructions </p>
+      <p>
+        Depending on how your network is configured you may need to include the port that you are along with your IP address.</p>
     </div>
     <div class="mdl-cell mdl-cell--4-col">
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
         <input class="mdl-textfield__input" type="text" id="name" name="name" ng-model="addClockCtrl.clock.name">
         <label class="mdl-textfield__label" for="name">Clock Name</label>
       </div>
+      <p ng-show="(addClockCtrl.clock.name.length > 3)">
+        Great name you can use it!
+      </p>
     </div>
     <div class="mdl-cell mdl-cell--4-col">
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="text" id="ip" name="ip" ng-model="addClockCtrl.clock.ip">
-        <label class="mdl-textfield__label" for="ip"> IP Address </label>
+        <input class="mdl-textfield__input" type="text" id="ip" name="ip" ng-model="addClockCtrl.clock.ip" ng-change="addClockCtrl.checkClockLocation()">
+        <label class="mdl-textfield__label" for="ip">
+          IP Address
+        </label>
       </div>
+      <p ng-show="(addClockCtrl.validIp)">
+        Clock found at that address!
+      </p>
     </div>
     <div class="mdl-cell mdl-cell--12-col text-center">
-      <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-button--block">
+      <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-button--block" ng-disabled="!addClockCtrl.validIp">
         Add Clock!
       </button>
     </div>

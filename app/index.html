@@ -64,8 +64,8 @@
 
           <!-- Logged In View -->
           <nav class="mdl-navigation" ng-show="main.loggedIn">
-            <a class="mdl-navigation__link" href="/#/piclocks">Your Pi Clocks</a>
-            <a class="mdl-navigation__link" href="/#/add-pi-clock">Add Pi Clock</a>
+            <a class="mdl-navigation__link" href="/#/">Docs</a>
+            <a class="mdl-navigation__link" href="/#/piclocks">Manage Cocks</a>
             <a class="mdl-navigation__link" href="/#/" ng-click="main.logout(); main.updateLoggedIn();">Logout</a>
           </nav>
           <!-- Logged In View -->
@@ -98,9 +98,9 @@
 
         <!-- Logged In View -->
         <nav class="mdl-navigation" ng-show="main.loggedIn">
-          <a class="mdl-navigation__link" href="/#/piclocks">Your Pi Clocks</a>
-          <a class="mdl-navigation__link" href="/#/add-pi-clock">Add Pi Clock</a>
-          <a class="mdl-navigation__link" href="/#/" ng-click="main.logout(); main.isLoggedIn();">Logout</a>
+          <a class="mdl-navigation__link" href="/#/">Docs</a>
+          <a class="mdl-navigation__link" href="/#/piclocks">Manage Cocks</a>
+          <a class="mdl-navigation__link" href="/#/" ng-click="main.logout(); main.updateLoggedIn();">Logout</a>
         </nav>
         <!-- Logged In View -->
 
@@ -110,25 +110,15 @@
 
         <ng-view onload="main.updateLoggedIn();"></ng-view>
 
+        <!-- Toast Container: Not visable until activated -->
+        <div id="toast" class="mdl-js-snackbar mdl-snackbar">
+          <div class="mdl-snackbar__text"></div>
+          <button class="mdl-snackbar__action" type="button"></button>
+        </div>
+        <!-- END TOAST CONTAINER -->
+
       </main>
       <!-- END CONTENT CONTAINER -->
-
-      <!--  FOOTER -->
-      <!-- <footer class="mdl-mini-footer">
-        <div class="mdl-mini-footer__left-section">
-          <div class="mdl-logo">
-            ARISE PI
-          </div>
-          <ul class="mdl-mini-footer__link-list">
-            <button class="mdl-mini-footer__social-btn"></button>
-            <button class="mdl-mini-footer__social-btn"></button>
-            <button class="mdl-mini-footer__social-btn"></button>
-          </ul>
-        </div>
-        <div class="mdl-mini-footer__right-section"></div>
-      </footer> -->
-      <!-- END FOOTER -->
-
     </div>
 
     <!--  JAVASCRIPT CDNS -->

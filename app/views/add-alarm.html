@@ -76,7 +76,8 @@
     </div>
     <div class="mdl-cell mdl-cell--4-col">
       <h3>
-        {{ clockCtrl.alarm.hour }}:{{ clockCtrl.alarm.min }}
+        {{ clockCtrl.alarm.hour }}:<span ng-show="(clockCtrl.alarm.min < 10)">0</span>{{ clockCtrl.alarm.min }}
+
         <span ng-show="clockCtrl.alarm.am">
           AM
         </span>

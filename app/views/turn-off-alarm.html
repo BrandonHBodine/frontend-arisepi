@@ -1,44 +1,71 @@
 <div class="mdl-grid mdl-page top-margin mdl-shadow--1dp" ng-show="main.loggedIn">
-  <div class="mdl-cell mdl-cell--12-col">
+  <div class="mdl-cell mdl-cell--12-col text-center">
     <h1>
       {{ alarmCtrl.title }}
     </h1>
-    <p>To turn off the alarm solve these simple math problems.</p>
+    <h3>To turn off the alarm solve these 3 simple math problems.</h3>
   </div>
-  <div class="mdl-cell mdl-cell--12-col" ng-hide="alarmCtrl.q1.isSolved">
-
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-      <input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="q1" name="q1" ng-model="alarmCtrl.q1.guess" ng-change="alarmCtrl.compareGuessAnswer(alarmCtrl.q1)">
-      <label class="mdl-textfield__label" for="q1">
-        What is the sum of {{ alarmCtrl.q1.a }}  + {{ alarmCtrl.q1.b }} + {{ alarmCtrl.q1.c }} + {{ alarmCtrl.q1.d }}?
+  <div class="mdl-cell mdl-cell--12-col text-center">
+    <h4>
+      What is the sum of
+      {{ alarmCtrl.q1.a }}
+      +
+      {{ alarmCtrl.q1.b }}
+      +
+      {{ alarmCtrl.q1.c }}
+      +
+      {{ alarmCtrl.q1.d }}?
+    </h4>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label text-center">
+      <input class="mdl-textfield__input text-center" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="q1" name="q1" ng-model="alarmCtrl.q1.guess" ng-change="alarmCtrl.compareGuessAnswer(alarmCtrl.q1)">
+      <label class="mdl-textfield__label text-center" for="q1">
+        Answer!
       </label>
       <span class="mdl-textfield__error">Input is not a valid number!</span>
     </div>
 
   </div>
-  <div class="mdl-cell mdl-cell--12-col" ng-show="alarmCtrl.q1.isSolved && !alarmCtrl.q2.isSolved">
-
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-      <input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="q2" name="q2" ng-model="alarmCtrl.q2.guess" ng-change="alarmCtrl.compareGuessAnswer(alarmCtrl.q2)">
-      <label class="mdl-textfield__label" for="q2">
-        What is the sum of {{ alarmCtrl.q2.a }}  + {{ alarmCtrl.q2.b }} + {{ alarmCtrl.q2.c }} + {{ alarmCtrl.q2.d }}?
+  <div class="mdl-cell mdl-cell--12-col text-center" ng-show="alarmCtrl.q1.isSolved">
+    <h4>
+      What is the sum of
+      {{ alarmCtrl.q2.a }}
+      +
+      {{ alarmCtrl.q2.b }}
+      +
+      {{ alarmCtrl.q2.c }}
+      +
+      {{ alarmCtrl.q2.d }}?
+    </h4>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label text-center">
+      <input class="mdl-textfield__input text-center" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="q2" name="q2" ng-model="alarmCtrl.q2.guess" ng-change="alarmCtrl.compareGuessAnswer(alarmCtrl.q2)">
+      <label class="mdl-textfield__label text-center" for="q2">
+        Answer another!
       </label>
       <span class="mdl-textfield__error">Input is not a valid number!</span>
     </div>
 
   </div>
-  <div class="mdl-cell mdl-cell--12-col" ng-show="alarmCtrl.q2.isSolved && !alarmCtrl.q3.isSolved">
-
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-      <input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="q3" name="q3" ng-model="alarmCtrl.q3.guess" ng-change="alarmCtrl.compareGuessAnswer(alarmCtrl.q3)">
-      <label class="mdl-textfield__label" for="q3">
-        What is the sum of {{ alarmCtrl.q3.a }}  + {{ alarmCtrl.q3.b }} + {{ alarmCtrl.q3.c }} + {{ alarmCtrl.q3.d }}?
+  <div class="mdl-cell mdl-cell--12-col text-center" ng-show="alarmCtrl.q2.isSolved && alarmCtrl.q1.isSolved">
+    <h4>
+      What is the sum of
+      {{ alarmCtrl.q3.a }}
+      +
+      {{ alarmCtrl.q3.b }}
+      +
+      {{ alarmCtrl.q3.c }}
+      +
+      {{ alarmCtrl.q3.d }}?
+    </h4>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label text-center">
+      <input class="mdl-textfield__input text-center" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="q3" name="q3" ng-model="alarmCtrl.q3.guess" ng-change="alarmCtrl.compareGuessAnswer(alarmCtrl.q3)">
+      <label class="mdl-textfield__label text-center" for="q3">
+        Last one!
       </label>
       <span class="mdl-textfield__error">Input is not a valid number!</span>
     </div>
 
   </div>
-  <div class="mdl-cell mdl-cell--12-col" ng-show='(alarmCtrl.q2.isSolved && alarmCtrl.q2.isSolved && alarmCtrl.q3.isSolved)'>
+  <div class="mdl-cell mdl-cell--12-col text-center" ng-show='(alarmCtrl.q2.isSolved && alarmCtrl.q2.isSolved && alarmCtrl.q3.isSolved)'>
     <h4>Congratulations, You can turn off your alarm now! Don't forget to get out of bed though.</h4>
     <button ng-click="alarmCtrl.turnOffAlarm(alarmCtrl.clockIp)" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
       Turn Alarm Off

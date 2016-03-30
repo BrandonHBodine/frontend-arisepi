@@ -56,6 +56,19 @@ function AddClockController($http, authentication, piclocks, mdlElementRegister)
   var vm = this;
   vm.title = 'Add a Pi Clock';
   vm.clock = {};
+  vm.validIp = false;
+  vm.checkClockLocation = function() {
+    piclocks.checkClockLocation(vm.clock.ip)
+      .then(function successCallback(clockRes) {
+        if (clockRes.data.piclock) {
+          vm.validIp = true;
+        } else {
+          vm.validIp = false;
+        }
+      }, function errorCallback() {
+        vm.validIp = false;
+      });
+  };
   vm.submit = piclocks.addClock;
 }
 
@@ -125,7 +138,7 @@ function AlarmController($http, $routeParams, authentication, piclocks, mdlEleme
   vm.q2 = getProblem();
   vm.q3 = getProblem();
 
-  vm.turnOffAlarm = function(clockIp){
+  vm.turnOffAlarm = function(clockIp) {
     piclocks.turnOffLed(clockIp);
     piclocks.turnOffMp3(clockIp);
   };
@@ -142,20 +155,20 @@ function AlarmController($http, $routeParams, authentication, piclocks, mdlEleme
     var ip = response.data[0].ip;
   });
 
-  function getProblem(){
+  function getProblem() {
     var problem = {};
-    problem.a = getRandomIntInclusive(1,10);
-    problem.b = getRandomIntInclusive(1,10);
-    problem.c = getRandomIntInclusive(1,10);
-    problem.d = getRandomIntInclusive(1,10);
+    problem.a = getRandomIntInclusive(1, 10);
+    problem.b = getRandomIntInclusive(1, 10);
+    problem.c = getRandomIntInclusive(1, 10);
+    problem.d = getRandomIntInclusive(1, 10);
     problem.answer = problem.a + problem.b + problem.c + problem.d;
     problem.isSolved = false;
-    problem.guess= '';
+    problem.guess = '';
     return problem;
   }
 
-  function compareGuessAnswer(qobj){
-    if (qobj.guess === qobj.answer ) {
+  function compareGuessAnswer(qobj) {
+    if (qobj.guess === qobj.answer) {
       qobj.isSolved = true;
     } else {
       qobj.isSolved = false;
@@ -163,6 +176,7 @@ function AlarmController($http, $routeParams, authentication, piclocks, mdlEleme
     console.log(qobj.guess);
     console.log(qobj.answer);
   }
+
   function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
