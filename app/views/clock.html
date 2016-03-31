@@ -1,17 +1,15 @@
 <div class="mdl-grid mdl-page top-margin mdl-shadow--1dp">
 
-  <div class="mdl-cell mdl-cell--6-col" ng-show="main.loggedIn">
+  <div class="mdl-cell mdl-cell--12-col" ng-show="main.loggedIn">
     <h1>
       {{ clockCtrl.clockName }}
     </h1>
-    <h2>
+    <h2 ng-hide="true">
       {{ clockCtrl.clockId }}
     </h2>
-    <h2>
+    <h2 ng-hide="true">
       {{ clockCtrl.clockIp }}
     </h2>
-  </div>
-  <div class="mdl-cell mdl-cell--6-col" ng-show="main.loggedIn">
     <a ng-href="/#/clock/{{clockCtrl.id}}/alarm-off" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
       Turn Off Alarm
     </a>
@@ -19,7 +17,6 @@
       Add Alarm
     </a>
   </div>
-
   <div class="mdl-cell mdl-cell--4-col" ng-repeat="alarm in clockCtrl.alarms">
     <div class="mdl-card mdl-shadow--2dp">
       <div class="mdl-card__title">
