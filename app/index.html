@@ -56,7 +56,7 @@
 
           <!-- Not Logged In View -->
           <nav class="mdl-navigation" ng-hide="main.loggedIn">
-            <a class="mdl-navigation__link" href="#">About</a>
+            <a class="mdl-navigation__link" href="#/docs">Docs</a>
             <a class="mdl-navigation__link" href="/#/signup">Sign Up</a>
             <a class="mdl-navigation__link" href="/#/login">Login</a>
           </nav>
@@ -64,7 +64,7 @@
 
           <!-- Logged In View -->
           <nav class="mdl-navigation" ng-show="main.loggedIn">
-            <a class="mdl-navigation__link" href="/#/">Docs</a>
+            <a class="mdl-navigation__link" href="#/docs">Docs</a>
             <a class="mdl-navigation__link" href="/#/piclocks">Manage Clocks</a>
             <a class="mdl-navigation__link" href="/#/" ng-click="main.logout(); main.updateLoggedIn();">Logout</a>
           </nav>
@@ -90,7 +90,7 @@
 
         <!-- Not Logged In View -->
         <nav class="mdl-navigation" ng-hide="main.loggedIn">
-          <a class="mdl-navigation__link" href="#">About</a>
+          <a class="mdl-navigation__link" href="#/docs">Docs</a>
           <a class="mdl-navigation__link" href="/#/signup">Sign Up</a>
           <a class="mdl-navigation__link" href="/#/login">Login</a>
         </nav>
@@ -98,7 +98,7 @@
 
         <!-- Logged In View -->
         <nav class="mdl-navigation" ng-show="main.loggedIn">
-          <a class="mdl-navigation__link" href="/#/">Docs</a>
+          <a class="mdl-navigation__link" href="/#/docs">Docs</a>
           <a class="mdl-navigation__link" href="/#/piclocks">Manage Cocks</a>
           <a class="mdl-navigation__link" href="/#/" ng-click="main.logout(); main.updateLoggedIn();">Logout</a>
         </nav>
@@ -117,7 +117,15 @@
         </div>
         <!-- END TOAST CONTAINER -->
 
+        <div class="mdl-grid mdl-page-footer top-margin mdl-shadow--1dp">
+          <div class="mdl-cell mdl-cell--12-col text-center">
+            <a href="/#/me" class="mdl-page-footer-link">
+              Built By Brandon</a>
+          </div>
+        </div>
+
       </main>
+
       <!-- END CONTENT CONTAINER -->
     </div>
 

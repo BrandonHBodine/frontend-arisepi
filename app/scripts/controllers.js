@@ -8,7 +8,7 @@ app.controller('LoginController', ['$http', 'authentication', 'mdlElementRegiste
 app.controller('AddClockController', ['$http', 'authentication', 'piclocks', 'mdlElementRegister', AddClockController]);
 app.controller('YourClocksController', ['$http', 'authentication', 'piclocks', 'mdlElementRegister', YourClocksController]);
 app.controller('ClockController', ['$http', '$routeParams', 'authentication', 'piclocks', 'mdlElementRegister', ClockController]);
-app.controller('AlarmController', ['$http', '$routeParams', 'authentication', 'piclocks', 'mdlElementRegister', AlarmController]);
+app.controller('AlarmController', ['$http','$location', '$routeParams', 'authentication', 'piclocks', 'mdlElementRegister', AlarmController]);
 
 
 function MainController($interval, authentication) {
@@ -124,7 +124,7 @@ function ClockController($http, $routeParams, authentication, piclocks, mdlEleme
 
 }
 
-function AlarmController($http, $routeParams, authentication, piclocks, mdlElementRegister) {
+function AlarmController($http, $location, $routeParams, authentication, piclocks, mdlElementRegister) {
   mdlElementRegister.update();
   var id = $routeParams.clockId;
   var vm = this;
@@ -137,10 +137,13 @@ function AlarmController($http, $routeParams, authentication, piclocks, mdlEleme
   vm.q1 = getProblem();
   vm.q2 = getProblem();
   vm.q3 = getProblem();
+  vm.actionToast = authentication.actionToast;
 
   vm.turnOffAlarm = function(clockIp) {
     piclocks.turnOffLed(clockIp);
     piclocks.turnOffMp3(clockIp);
+    vm.actionToast('Alarm Off! Get Going!')
+    $location.path('/clocks');
   };
 
   vm.parseClockData = function(response) {

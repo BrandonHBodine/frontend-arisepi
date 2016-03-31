@@ -17,6 +17,14 @@ app.config(['$routeProvider' , function($routeProvider) {
       templateUrl: 'views/login.html',
       controller: 'LoginController',
       controllerAs: 'loginCtrl'
+    }).when('/me', {
+      templateUrl: 'views/me.html'
+      // controller: 'meController',
+      // controllerAs: 'loginCtrl'
+    }).when('/docs', {
+      templateUrl: 'views/docs.html'
+      // controller: 'meController',
+      // controllerAs: 'loginCtrl'
     }).when('/add-pi-clock', {
       templateUrl: 'views/add-pi-clock.html',
       controller: 'AddClockController',
